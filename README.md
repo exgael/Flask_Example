@@ -5,15 +5,16 @@ Install dependencies
 make install
 ```
 
-#### Make
-for simple hello world app :
+#### Launch apps
+for a simple hello world app :
 ```
 make helloworld
 ```
 
-for message app, runi in separate terminal :
+for message app, run in separate terminal :
 ```
 make message_server
+make message_terminal
 make message_terminal
 ```
 
@@ -56,4 +57,4 @@ This will start a development server on localhost (usually on port 5000).
 #### How to freeze requirement
 ```
 python -m pip freeze > requirements.txt
-```# Flask_Example
+```

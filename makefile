@@ -1,13 +1,4 @@
-.PHONY: helloworld message_server message_terminal install clean
-
-helloworld:
-	./helloworld/venv/bin/python3 ./helloworld/app.py
-
-message_server:
-	./messages/backend/venv/bin/python3 ./messages/backend/app.py
-
-message_terminal:
-	./messages/frontend/venv/bin/python3 ./messages/frontend/terminal.py
+.PHONY: helloworld message_server message_terminal bookstore install clean
 
 install:
 	# Create a virtual environment for helloworld
@@ -25,9 +16,28 @@ install:
 	# Activate the virtual environment and install dependencies
 	./messages/frontend/venv/bin/pip install -r ./messages/frontend/requirements.txt
 
+	# Create a virtual environment for bookstore
+	python3 -m venv ./bookstore/venv
+	# Activate the virtual environment and install dependencies
+	./bookstore/venv/bin/pip install -r ./bookstore/requirements.txt
+
+helloworld:
+	./helloworld/venv/bin/python3 ./helloworld/app.py
+
+message_server:
+	./messages/backend/venv/bin/python3 ./messages/backend/app.py
+
+message_terminal:
+	./messages/frontend/venv/bin/python3 ./messages/frontend/terminal.py
+
+bookstore:
+	./bookstore/venv/bin/python3 ./bookstore/app.py
+
 clean:
 	@echo "Cleaning up..."
 	rm -rf ./helloworld/venv
 	rm -rf ./messages/backend/venv
 	rm -rf ./messages/frontend/venv
+	rm -rf ./bookstore/venv
+	rm -rf ./bookstore/instance
 	@echo "Cleaned."

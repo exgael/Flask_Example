@@ -2,20 +2,25 @@
 
 Install dependencies
 ```
-make install
+make
 ```
 
 #### Launch apps
-for a simple hello world app :
+##### Hello world app :
 ```
 make helloworld
 ```
 
-for message app, run in separate terminal :
+##### Message app, run in separate terminal :
 ```
 make message_server
 make message_terminal
 make message_terminal
+```
+
+##### Bookstore crud API :
+```
+make bookstore
 ```
 
 #### To clean repo

@@ -34,10 +34,10 @@ bookstore:
 	./bookstore/venv/bin/python3 ./bookstore/app.py
 
 clean:
-	@echo "Cleaning up..."
-	rm -rf ./helloworld/venv
-	rm -rf ./messages/backend/venv
-	rm -rf ./messages/frontend/venv
-	rm -rf ./bookstore/venv
-	rm -rf ./bookstore/instance
+	@echo "Cleaning up virtual environments..."
+	@find . -type d -name "venv" -exec rm -rf {} +
+	@echo "Cleaned."
+
+	@echo "Cleaning up instance directories..."
+	@find . -type d -name "instance" -exec rm -rf {} +
 	@echo "Cleaned."

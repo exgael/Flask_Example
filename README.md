@@ -22,7 +22,10 @@ make message_terminal
 ```
 make bookstore
 ```
-
+you can run the populate script to add some data ( see bookstore/populate.py )
+```
+make populate-bookstore
+```
 #### To clean repo
 ```
 make clean

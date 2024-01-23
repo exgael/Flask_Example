@@ -33,6 +33,9 @@ message_terminal:
 bookstore:
 	./bookstore/venv/bin/python3 ./bookstore/app.py
 
+populate-bookstore:
+	./bookstore/venv/bin/python3 ./bookstore/populate.py
+
 clean:
 	@echo "Cleaning up virtual environments..."
 	@find . -type d -name "venv" -exec rm -rf {} +

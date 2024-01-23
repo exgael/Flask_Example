@@ -42,5 +42,5 @@ clean:
 	@echo "Cleaned."
 
 	@echo "Cleaning up instance directories..."
-	@find . -type d -name "instance" -exec rm -rf {} +
+	@find . -type f -name "books.db" -exec rm -rf {} +
 	@echo "Cleaned."

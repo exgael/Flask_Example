@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 base_dir = os.path.abspath(os.path.dirname(__file__))
+os.makedirs(os.path.join(base_dir, 'bookstore/instance'), exist_ok=True)
 db_path = os.path.join(base_dir, 'instance/books.db')
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

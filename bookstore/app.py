@@ -1,8 +1,22 @@
 import os
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_json_schema import JsonSchema, JsonValidationError
+
+add_book_schema = {
+    'type': 'object',
+    'properties': {
+        'title': {'type': 'string'},
+        'author': {'type': 'string'},
+        'published_year': {'type': 'integer'},
+    },
+    'required': ['title', 'author', 'published_year']
+}
+
 
 app = Flask(__name__)
+jsonschema = JsonSchema(app)
+
 base_dir = os.path.abspath(os.path.dirname(__file__))
 os.makedirs(os.path.join(base_dir, 'instance'), exist_ok=True)
 db_path = os.path.join(base_dir, 'instance/books.db')
@@ -25,6 +39,7 @@ class Book(db.Model):
         }
 
 @app.route('/books', methods=['POST'])
+@jsonschema.validate(add_book_schema)
 def add_book():
     data = request.json
     new_book = Book(title=data['title'], author=data['author'], published_year=data['published_year'])
@@ -58,6 +73,11 @@ def delete_book(id):
     db.session.delete(book)
     db.session.commit()
     return jsonify({'message': 'Book deleted successfully'}), 204
+
+@app.errorhandler(JsonValidationError)
+def on_validation_error(e):
+    return jsonify({'error': e.message}), 400
+
 
 if __name__ == '__main__':
     with app.app_context():

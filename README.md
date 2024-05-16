@@ -1,4 +1,4 @@
-## How to yse this repo 
+## How to use this repo 
 
 Install dependencies
 ```
